@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Slot Machine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id=body>
+  <div id="thing">
+  <h1 id="head">SLOT MACHINE</h1>
+  <img id="yksi" src="kuva1.png">
+  <img id="kaksi" src="kuva2.png">
+  <img id="kolme" src="kuva3.png">
+  <br>
+  <button id="button" onclick="myFunction()">Play</button>
+  <h3 id="money">Your balance: 10€</h3>
+  <h2 id="outcome"></h2>
+
+  <script id=func>
+      let money = 10
+    function myFunction() {
+      money = money - 1
+      document.getElementById("outcome").innerHTML = ""
+      document.getElementById("money").innerHTML = "Your balance: " + money + "€"
+      let x = Math.floor(Math.random() * 3 + 1)
+      let y = Math.floor(Math.random() * 3 + 1)
+      let z = Math.floor(Math.random() * 3 + 1)
+      document.getElementById("yksi").src="kuva" + x + ".png"
+      document.getElementById("kaksi").src="kuva" + y + ".png"
+      document.getElementById("kolme").src="kuva" + z + ".png"
+      if(x == y && x == z) {
+        money = money + 10
+        document.getElementById("money").innerHTML = "Your balance: " + money + "€"
+        document.getElementById("outcome").innerHTML = "You won 10€!"
+      }
+      if (money < 1) {
+        document.getElementById("outcome").innerHTML = "You have insufficient funds"
+        document.getElementById("button").onclick = ""
+      }
+
+      
+    }
+    
+  </script>
+  </div>
+</body>
+</html>
